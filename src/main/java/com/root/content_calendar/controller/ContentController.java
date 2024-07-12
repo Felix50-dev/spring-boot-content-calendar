@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/content")
-@CrossOrigin
 public class ContentController {
 
     private final ContentRepository repository;
@@ -54,13 +53,9 @@ public class ContentController {
     public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
-    @GetMapping("/filter/{keyword}")
-    public List<Content> findByTitle(@PathVariable String keyword) {
-        return repository.findAllByTitleContains(keyword);
-    }
-    @GetMapping("/filter/status/{status}")
-    public List<Content> findByStatus(@PathVariable Status status) {
-        return repository.listByStatus(status);
+    @GetMapping("/filter/type/{type}")
+    public List<Content> filterByType(@PathVariable String type) {
+        return repository.findAllByContentType(type.toUpperCase());
     }
 
 }

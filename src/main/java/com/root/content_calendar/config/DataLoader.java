@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.root.content_calendar.model.Content;
 import com.root.content_calendar.repository.ContentRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ public class DataLoader implements CommandLineRunner {
     private final ContentRepository repository;
     private final ObjectMapper objectMapper;
 
+    @Autowired
     public DataLoader(ContentRepository repository, ObjectMapper objectMapper) {
         this.repository = repository;
         this.objectMapper = objectMapper;
